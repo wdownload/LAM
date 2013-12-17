@@ -134,7 +134,7 @@ namespace LAM.View
             tempcombo.ItemsSource = companhias;
         }
 
-        private void DataGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        private  void DataGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
             if (e.EditAction == DataGridEditAction.Cancel)
             {

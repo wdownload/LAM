@@ -138,8 +138,9 @@ namespace LAM.View
         }
         public void SaveChanges() {
            
-
+            if(g.SelectedItem==chegada && g.SelectedItem!=null)
               context.SaveChanges();
+           
               
         
         }
