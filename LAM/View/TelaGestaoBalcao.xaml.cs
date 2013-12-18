@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using LAM.Model;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,13 @@ namespace LAM.View
     /// </summary>
     public partial class TelaGestaoBalcao : MetroWindow
     {
+        public event EventHandler<BalcaoUpdateEventArgs> updateBalcao;
+
         public TelaGestaoBalcao()
         {
             InitializeComponent();
+
+            //updateBalcao = new EventHandler<BalcaoUpdateEventArgs>(;
         }
 
         internal void iniciarComponentes(int balcao)
@@ -34,28 +39,10 @@ namespace LAM.View
         {
             try
             {
-                var allScreens = System.Windows.Forms.Screen.AllScreens.ToList();
+                voos.gravar();
+                if(updateBalcao != null)
+                    this.updateBalcao(this, new BalcaoUpdateEventArgs(voos.balcao));
 
-                var locationScreen = allScreens.SingleOrDefault(s => this.Left >= s.WorkingArea.Left && this.Left < s.WorkingArea.Right);
-
-                var tela3 = allScreens.ElementAt(voos.getTvNumber());
-
-                Balcao form3 = new Balcao();
-
-                form3.voos.loadComponetes(voos.imgCompania.Source, voos.lblVoo.Content as string, voos.lblDestino.Content as string, voos.lblClasse.Content as string);
-
-                form3.Left = tela3.WorkingArea.Left;
-                form3.Top = tela3.WorkingArea.Top;
-                form3.Width = tela3.WorkingArea.Width;
-                form3.Height = tela3.WorkingArea.Height;
-                form3.WindowState = WindowState.Normal;
-
-                form3.WindowStartupLocation = WindowStartupLocation.Manual;
-                form3.Owner = this;
-                form3.ShowInTaskbar = false;
-
-                form3.Show();
-                new ctrlVoos().actualiza();
             }
             catch 
             {
@@ -67,11 +54,6 @@ namespace LAM.View
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             voos.editar();
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

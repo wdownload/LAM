@@ -6,14 +6,18 @@
         Title="Aeroporto de Pemba" Height="720" Width="1280" WindowStyle="None"  WindowState="Maximized" ResizeMode="CanResize" ShowTitleBar="False" ShowCloseButton="False" PreviewDrop="MetroWindow_PreviewDrop" Closing="MetroWindow_Closing" Focusable="False" IsTabStop="False">
 
 
-    <StackPanel x:Name="LayoutRoot" Margin="0,0,-42,183">
+    <StackPanel x:Name="LayoutRoot" >
         <DockPanel Margin="4,0,-4,0">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_Sistema">
                     <MenuItem Header="_Gestão de Monitores" Click="GestaoMonitores_Click"/>
                     <MenuItem Header="_Adição de Companias" Click="MenuItem_Click"/>
                     <MenuItem Header="_Desligar" Click="MenuItem_Click_1"/>
+
+
                 </MenuItem>
+                <MenuItem Header="_Ligar Tv's"  Click="Button_Click"/>
+
             </Menu>
             <StackPanel>
                 <Grid Height="694" Width="1221" >
@@ -27,7 +31,7 @@
                     <Image x:Name="balca3" HorizontalAlignment="Left" Height="247" Margin="-62,262,0,0" VerticalAlignment="Top" Width="300" Source="Images/tv.jpg"  MouseDown="Image_MouseDown_5"/>
                     <Image x:Name="balca4" HorizontalAlignment="Left" Height="310" Margin="243,262,0,0" VerticalAlignment="Top" Width="300" Source="Images/tv.jpg"  MouseDown="Image_MouseDown_6" Grid.ColumnSpan="2"/>
                     <Image x:Name="balca5" HorizontalAlignment="Left" Height="310" Margin="106,262,0,0" VerticalAlignment="Top" Width="300" Source="Images/tv.jpg"  MouseDown="Image_MouseDown_7" Grid.Column="1"/>
-                    <Image x:Name="balca2" HorizontalAlignment="Left" Height="310" Margin="401,11,0,0" VerticalAlignment="Top" Width="300" Source="Images/tv.jpg"  MouseDown="Image_MouseDown_4" Grid.Column="1"/>
+                    <Image x:Name="balca2" HorizontalAlignment="Left" Height="310" Margin="401,-3,0,0" VerticalAlignment="Top" Width="300" Source="Images/tv.jpg"  MouseDown="Image_MouseDown_4" Grid.Column="1"/>
 
                     <Label Content="Partidas" HorizontalAlignment="Left" Margin="66,222,0,0" VerticalAlignment="Top" Height="48" Width="69" FontWeight="Bold"/>
                     <Label Content="Chegadas" HorizontalAlignment="Left" Margin="363,236,0,0" VerticalAlignment="Top" Height="48" Width="69" FontWeight="Bold"/>
@@ -38,7 +42,7 @@
                     <Label Content="Balcão 3" HorizontalAlignment="Left" Margin="66,484,0,0" VerticalAlignment="Top" Height="48" Width="69" FontWeight="Bold"/>
                     <Label  Content="Balcão 2 " HorizontalAlignment="Left" Margin="514,244,0,0" VerticalAlignment="Top" Height="26" Width="69" FontWeight="Bold" RenderTransformOrigin="-0.188,0.769" Grid.Column="1"/>
                     <Label Content="Balcao 5 " HorizontalAlignment="Left" Margin="244,489,0,0" VerticalAlignment="Top" Height="118" Width="109" FontWeight="Bold" Grid.Column="1" RenderTransformOrigin="4.014,-2.417"/>
-                    <View:ctrlPartidas  HorizontalAlignment="Left" Margin="-14,44,-415,-367" VerticalAlignment="Top" Height="1017" Width="1650" RenderTransformOrigin="0,0" MouseDown="Image_MouseDown_1" Loaded="ctrlPartidas_Loaded" Grid.ColumnSpan="2">
+                    <View:ctrlPartidas  HorizontalAlignment="Left" Margin="-14,44,-89,-367" VerticalAlignment="Top" Height="1017" Width="1324" RenderTransformOrigin="0,0" MouseDown="Image_MouseDown_1" Loaded="ctrlPartidas_Loaded" Grid.ColumnSpan="2">
                         <View:ctrlPartidas.LayoutTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="0.6" ScaleY="0.5"/>
@@ -68,8 +72,15 @@
                     </View:crtchegadas>
 
 
-                    <View:ctrlVoos x:Name="voo1" HorizontalAlignment="Left" Margin="134,49,-298,0" VerticalAlignment="Top" Width="943" Height="485" Grid.Column="1">
-
+                    <View:ctrlVoos x:Name="voo1" HorizontalAlignment="Left" Margin="143,47,-674,-421" VerticalAlignment="Top" Width="1310" Height="1068" Grid.Column="1">
+                        <View:ctrlVoos.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="0.7" ScaleY="0.5"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </View:ctrlVoos.LayoutTransform>
                         <View:ctrlVoos.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="0.24" ScaleY="0.24"/>
@@ -79,27 +90,15 @@
                             </TransformGroup>
                         </View:ctrlVoos.RenderTransform>
                     </View:ctrlVoos>
-                    <View:ctrlVoos x:Name="voo2" HorizontalAlignment="Left" Margin="444,59,-549,0" VerticalAlignment="Top" Width="884" Height="473" Loaded="ctrlVoos_Loaded_1" Grid.Column="1">
-                        <View:ctrlVoos.RenderTransform>
+                    <View:ctrlVoos x:Name="voo2" HorizontalAlignment="Left" Margin="447,45,-968,-421" VerticalAlignment="Top" Width="1300" Height="1070" Loaded="ctrlVoos_Loaded_1" Grid.Column="1">
+                        <View:ctrlVoos.LayoutTransform>
                             <TransformGroup>
-                                <ScaleTransform ScaleX="0.24" ScaleY="0.23"/>
+                                <ScaleTransform ScaleX="0.7" ScaleY="0.5"/>
                                 <SkewTransform/>
                                 <RotateTransform/>
                                 <TranslateTransform/>
                             </TransformGroup>
-                        </View:ctrlVoos.RenderTransform>
-                    </View:ctrlVoos>
-                    <View:ctrlVoos x:Name="voo3" HorizontalAlignment="Left" Margin="-24,304,0,-170" VerticalAlignment="Top" Width="934" Height="560" Grid.ColumnSpan="2">
-                        <View:ctrlVoos.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleX="0.24" ScaleY="0.24"/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </View:ctrlVoos.RenderTransform>
-                    </View:ctrlVoos>
-                    <View:ctrlVoos  x:Name="voo4" HorizontalAlignment="Left" Margin="286,304,0,-146" VerticalAlignment="Top" Width="897" Height="536" Grid.ColumnSpan="2">
+                        </View:ctrlVoos.LayoutTransform>
                         <View:ctrlVoos.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="0.24" ScaleY="0.24"/>
@@ -109,7 +108,15 @@
                             </TransformGroup>
                         </View:ctrlVoos.RenderTransform>
                     </View:ctrlVoos>
-                    <View:ctrlVoos x:Name="voo5" HorizontalAlignment="Left" Margin="144,312,-225,-91" VerticalAlignment="Top" Width="860" Height="473" Grid.Column="1">
+                    <View:ctrlVoos x:Name="voo3" HorizontalAlignment="Left" Margin="-16,309,-55,-676" VerticalAlignment="Top" Width="1292" Height="1061" Grid.ColumnSpan="2">
+                        <View:ctrlVoos.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="0.7" ScaleY="0.5"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </View:ctrlVoos.LayoutTransform>
                         <View:ctrlVoos.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="0.24" ScaleY="0.24"/>
@@ -119,14 +126,46 @@
                             </TransformGroup>
                         </View:ctrlVoos.RenderTransform>
                     </View:ctrlVoos>
-                    <Button Content="Ligar as Tv" HorizontalAlignment="Left" Margin="10,720,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                    <View:ctrlVoos  x:Name="voo4" HorizontalAlignment="Left" Margin="288,310,-392,-727" VerticalAlignment="Top" Width="1325" Height="1111" Grid.ColumnSpan="2">
+                        <View:ctrlVoos.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="0.7" ScaleY="0.5"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </View:ctrlVoos.LayoutTransform>
+                        <View:ctrlVoos.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="0.24" ScaleY="0.24"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </View:ctrlVoos.RenderTransform>
+                    </View:ctrlVoos>
+                    <View:ctrlVoos x:Name="voo5" HorizontalAlignment="Left" Margin="149,311,-690,-623" VerticalAlignment="Top" Width="1320" Height="1006" Grid.Column="1">
+                        <View:ctrlVoos.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="0.7" ScaleY="0.5"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </View:ctrlVoos.LayoutTransform>
+                        <View:ctrlVoos.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="0.24" ScaleY="0.24"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </View:ctrlVoos.RenderTransform>
+                    </View:ctrlVoos>
 
                 </Grid>
 
             </StackPanel>
         </DockPanel>
-
-
-
     </StackPanel>
 </Controls:MetroWindow>

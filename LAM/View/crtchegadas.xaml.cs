@@ -35,6 +35,7 @@ namespace LAM.View
         ObservableCollection<Companhia> companhias;
         static LAMEntities context = new LAMEntities();
         Chegada chegada;
+        public ComboBox tempcombo { get; set; }
 #endregion 
 
         public static List<Chegada> cheg
@@ -136,22 +137,41 @@ namespace LAM.View
         
     }catch(Exception ex){}
         }
-        public void SaveChanges() {
-           
-            if(g.SelectedItem==chegada && g.SelectedItem!=null)
-              context.SaveChanges();
+        public async void SaveChanges() {
+
+            if (g.SelectedItem == null)
+                return;
+
+            if (g.SelectedItem == chegada)
+                context.SaveChanges();
+            else
+            {
+                chegada = new Chegada();
+                chegada = g.SelectedItem as Chegada;
+                if (tempcombo == null)
+                    return;
+                var Companhia = tempcombo.SelectedItem == null ? null : tempcombo.SelectedItem as Companhia;
+
+                if (Companhia == null)
+                    return;
+
+                chegada.Companhia = Companhia.Id;
+                await context.SaveChangesAsync();
+
+            }
+            chegada = null;
            
               
         
         }
-        public ComboBox tempcombo { get; set; }
+       
 
         private void clInternalComp_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
                chegada =  g.SelectedItem as Chegada;
-
+               tempcombo = sender as ComboBox;
                 if (chegada == null)
                     chegada= new Chegada();
                 var combo = (ComboBox)sender;

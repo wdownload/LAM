@@ -119,6 +119,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dtLam.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\EventosDelegadoscs.cs" />
     <Compile Include="Model\LAMDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,6 +157,12 @@
     <Compile Include="View\ctrlVoos.xaml.cs">
       <DependentUpon>ctrlVoos.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\JanelaClasse.xaml.cs">
+      <DependentUpon>JanelaClasse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TelaBalcao.xaml.cs">
+      <DependentUpon>TelaBalcao.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TelaChegada.xaml.cs">
       <DependentUpon>TelaChegada.xaml</DependentUpon>
@@ -224,6 +231,14 @@
     <Page Include="View\ctrlPartidas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\JanelaClasse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TelaBalcao.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\TelaChegada.xaml">
       <SubType>Designer</SubType>

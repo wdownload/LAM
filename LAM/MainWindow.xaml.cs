@@ -1,4 +1,5 @@
-﻿using LAM.View;
+﻿using LAM.Model;
+using LAM.View;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,8 @@ namespace LAM
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        EnventoBalcao evento = null;
+
         private double LastHeight, LastWidth;
         private System.Windows.WindowState LastState;
 
@@ -32,7 +35,7 @@ namespace LAM
 
         public MainWindow()
         {
-            
+
             InitializeComponent();
 
             LastHeight = Height;
@@ -47,26 +50,38 @@ namespace LAM
             WindowState = System.Windows.WindowState.Normal;
             //WindowStyle = WindowStyle.None;
             ResizeMode = System.Windows.ResizeMode.NoResize;
-            
+
 
             //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             actualizar();
-            
-            
+
+            evento = new EnventoBalcao();
+
+            evento.balcaoReached += evento_balcaoReached;
         }
 
-        public void actualizar() 
+        private void evento_balcaoReached(object sender, BalcaoUpdateEventArgs e)
+        {
+            switch (e.getBalcao)
+            {
+                case 1: voo1.lerTv(1); break;
+                case 2: voo1.lerTv(2); break;
+                case 3: voo1.lerTv(3); break;
+                case 4: voo1.lerTv(4); break;
+                case 5: voo1.lerTv(5); break;
+            }
+        }
+
+        public void actualizar()
         {
             voo1.lerTv(1);
             voo2.lerTv(2);
             voo3.lerTv(3);
             voo4.lerTv(4);
             voo5.lerTv(5);
-
-
         }
-        
-        private void onclick() 
+
+        private void onclick()
         {
             switch (tv)
             {
@@ -106,8 +121,10 @@ namespace LAM
 
                     break;
                 case 3:
-                    
+
                     TelaGestaoBalcao form3 = new TelaGestaoBalcao();
+
+                    form3.updateBalcao += form3_updateBalcao;
 
                     form3.iniciarComponentes(1);
 
@@ -129,7 +146,7 @@ namespace LAM
 
                     break;
                 case 4:
-                   
+
                     TelaGestaoBalcao form4 = new TelaGestaoBalcao();
 
                     form4.iniciarComponentes(2);
@@ -151,6 +168,12 @@ namespace LAM
 
                     TelaGestaoBalcao form5 = new TelaGestaoBalcao();
 
+                    form5.Left = this.Left;
+                    form5.Top = this.Top;
+                    form5.Width = this.Width;
+                    form5.Height = this.Height;
+                    form5.WindowState = this.WindowState;
+
                     form5.iniciarComponentes(3);
 
                     form5.WindowStartupLocation = WindowStartupLocation.Manual;
@@ -162,8 +185,14 @@ namespace LAM
 
                     break;
                 case 6:
-                    
+
                     TelaGestaoBalcao form6 = new TelaGestaoBalcao();
+
+                    form6.Left = this.Left;
+                    form6.Top = this.Top;
+                    form6.Width = this.Width;
+                    form6.Height = this.Height;
+                    form6.WindowState = this.WindowState;
 
                     form6.iniciarComponentes(4);
 
@@ -175,8 +204,14 @@ namespace LAM
 
                     break;
                 case 7:
-                    
+
                     TelaGestaoBalcao form7 = new TelaGestaoBalcao();
+
+                    form7.Left = this.Left;
+                    form7.Top = this.Top;
+                    form7.Width = this.Width;
+                    form7.Height = this.Height;
+                    form7.WindowState = this.WindowState;
 
                     form7.iniciarComponentes(5);
 
@@ -189,9 +224,14 @@ namespace LAM
 
                     break;
             }
-            
-            
-                        
+
+
+
+        }
+
+        void form3_updateBalcao(object sender, BalcaoUpdateEventArgs e)
+        {
+            evento_balcaoReached(sender, e);
         }
 
         #region image_mousedown
@@ -209,7 +249,7 @@ namespace LAM
         }
         private void Image_MouseDown_4(object sender, MouseButtonEventArgs e)
         {
-            tv = 4; 
+            tv = 4;
             onclick();
         }
         private void Image_MouseDown_5(object sender, MouseButtonEventArgs e)
@@ -246,8 +286,8 @@ namespace LAM
             {
                 switch (tv)
                 {
-                    case 3:
-                        
+                    case 1:
+
                         var tela1 = tela;
                         TelaPartida form1 = new TelaPartida();
 
@@ -284,14 +324,13 @@ namespace LAM
 
 
                         break;
-                    case 1:
+                    case 3:
                         var tela3 = tela;
 
                         //JanelaClasse form3 = new JanelaClasse();
                         //form3.loadComponetes("saa.gif", "TM2120", "JOHANNESBURG", "");
 
-
-                        Balcao form3 = new Balcao();
+                        TelaBalcao form3 = new TelaBalcao();
 
                         form3.iniciarComponentes(1);
 
@@ -315,7 +354,7 @@ namespace LAM
                         //JanelaClasse form4 = new JanelaClasse();
                         //form4.loadComponetes("saa.gif", "TM2120", "JOHANNESBURG", "");
 
-                        Balcao form4 = new Balcao();
+                        TelaBalcao form4 = new TelaBalcao();
 
                         form4.iniciarComponentes(2);
 
@@ -337,7 +376,7 @@ namespace LAM
                         //JanelaClasse form5 = new JanelaClasse();
                         //form5.loadComponetes("saa.gif", "TM2120", "JOHANNESBURG", "");
 
-                        Balcao form5 = new Balcao();
+                        TelaBalcao form5 = new TelaBalcao();
 
                         form5.iniciarComponentes(3);
 
@@ -361,7 +400,7 @@ namespace LAM
                         //JanelaClasse form6 = new JanelaClasse();
                         //form6.loadComponetes("saa.gif", "TM2120", "JOHANNESBURG", "");
 
-                        Balcao form6 = new Balcao();
+                        TelaBalcao form6 = new TelaBalcao();
 
                         form6.iniciarComponentes(4);
 
@@ -380,8 +419,8 @@ namespace LAM
                         break;
                     case 7:
                         var tela7 = tela;
-                        
-                        Balcao form7 = new Balcao();
+
+                        TelaBalcao form7 = new TelaBalcao();
 
                         form7.iniciarComponentes(5);
 
@@ -401,18 +440,18 @@ namespace LAM
                         break;
                 }
                 tv++;
-                
-            
+
+
             }
 
-                
+
         }
 
         private void ctrlVoos_Loaded_1(object sender, RoutedEventArgs e)
         {
 
         }
-        
+
         private void GestaoMonitores_Click(object sender, RoutedEventArgs e)
         {
             TelasTeste f = new TelasTeste();
@@ -448,7 +487,7 @@ namespace LAM
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            Close();            
+            Close();
         }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -464,17 +503,17 @@ namespace LAM
             switch (rsltMessageBox)
             {
                 case MessageBoxResult.Yes:
-                    
+
                     break;
 
                 case MessageBoxResult.No:
                     e.Cancel = true; break;
 
                 case MessageBoxResult.Cancel:
-                    e.Cancel = true;break;
+                    e.Cancel = true; break;
             }
 
-            
+
         }
 
     }
