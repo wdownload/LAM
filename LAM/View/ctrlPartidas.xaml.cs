@@ -31,7 +31,7 @@ namespace LAM.View
 
         ObservableCollection<Partida> list;
         static LAMEntities context = new LAMEntities();
-
+        ComboBox tempcombo = new ComboBox();
         Partida chegada = new Partida();
 
         public static List<Partida> cheg
@@ -103,6 +103,7 @@ namespace LAM.View
         {
             try
             {
+                tempcombo = sender as ComboBox;
                 chegada = g.SelectedItem as Partida;
 
                 if (chegada == null)
@@ -129,25 +130,55 @@ namespace LAM.View
 
         private void cblInternalComp_Initialized(object sender, EventArgs e)
         {
-             var tempcombo = (FrameworkElement)sender as ComboBox;
+              tempcombo = (FrameworkElement)sender as ComboBox;
             tempcombo.Items.Clear();
             tempcombo.ItemsSource = companhias;
         }
 
         private  void DataGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            if (e.EditAction == DataGridEditAction.Cancel)
+            try
             {
-                e.Cancel = false;
+                if (e.EditAction == DataGridEditAction.Cancel)
+                {
+                    e.Cancel = false;
+                    return;
+
+                }
+
+                if (e.EditAction == DataGridEditAction.Commit)
+                {
+                    DataGridRow dgr = e.Row;
+                    //XmlElement xe = Chegada;
+                }
+                SaveChanges();
+            }
+            catch(Exception ex){
+            
+            }
+        }
+
+        public async void SaveChanges()
+        {
+            if (g.SelectedItem == null)
                 return;
 
-            }
-
-            if (e.EditAction == DataGridEditAction.Commit)
+            if (g.SelectedItem == chegada)
+                context.SaveChanges();
+            else
             {
-                DataGridRow dgr = e.Row;
-                //XmlElement xe = Chegada;
+                chegada = new Partida();
+                chegada = g.SelectedItem as Partida;
+                var Companhia =  tempcombo.SelectedItem==null ? null: tempcombo.SelectedItem as Companhia;
+
+                if (Companhia == null)
+                    return;
+
+                chegada.Companhia =  Companhia.Id;
+               await context.SaveChangesAsync();
+
             }
+            chegada = null;
 
         }
     }
