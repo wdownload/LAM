@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -48,9 +49,9 @@ namespace LAM
             Top = 0;
             Left = 0;
             WindowState = System.Windows.WindowState.Normal;
+
             //WindowStyle = WindowStyle.None;
             ResizeMode = System.Windows.ResizeMode.NoResize;
-
 
             //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             actualizar();
@@ -58,17 +59,49 @@ namespace LAM
             evento = new EnventoBalcao();
 
             evento.balcaoReached += evento_balcaoReached;
+
+            //block Windows Size
+            this.SourceInitialized += Window1_SourceInitialized;
         }
+
+        private void Window1_SourceInitialized(object sender, EventArgs e)
+        {
+            WindowInteropHelper helper = new WindowInteropHelper(this);
+            HwndSource source = HwndSource.FromHwnd(helper.Handle);
+            source.AddHook(WndProc);
+        }
+
+        const int WM_SYSCOMMAND = 0x0112;
+        const int SC_MOVE = 0xF010;
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+
+            switch (msg)
+            {
+                case WM_SYSCOMMAND:
+                    int command = wParam.ToInt32() & 0xfff0;
+                    if (command == SC_MOVE)
+                    {
+                        handled = true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return IntPtr.Zero;
+        }
+
 
         private void evento_balcaoReached(object sender, BalcaoUpdateEventArgs e)
         {
             switch (e.getBalcao)
             {
-                case 1: voo1.lerTv(1); break;
-                case 2: voo1.lerTv(2); break;
-                case 3: voo1.lerTv(3); break;
-                case 4: voo1.lerTv(4); break;
-                case 5: voo1.lerTv(5); break;
+                case 1: voo1.lerTv(1); tv = 3; onclick(); break;
+                case 2: voo2.lerTv(2); tv = 4; onclick(); break;
+                case 3: voo3.lerTv(3); tv = 5; onclick(); break;
+                case 4: voo4.lerTv(4); tv = 6; onclick(); break;
+                case 5: voo5.lerTv(5); tv = 7; onclick(); break;
             }
         }
 
