@@ -61,7 +61,7 @@ namespace LAM.View
         {
             //var dataSource = new ObservableCollection<ImapHost>(context.Car);
             list = new ObservableCollection<Partida>(context.Partidas.ToList());
-            companhias = new ObservableCollection<Companhia>(context.Companhia.ToList());
+            companhias = new ObservableCollection<Companhia>(context.Companhias.ToList());
             list.CollectionChanged += CollectionChanged;
             g.DataContext = list;
             //g.DataContext = list;

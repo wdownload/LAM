@@ -14,7 +14,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>H:\</PublishUrl>
+    <PublishUrl>C:\Users\Utilizador\Documents\projecto\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,8 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -120,15 +119,15 @@
       <DependentUpon>dtLam.xsd</DependentUpon>
     </Compile>
     <Compile Include="Model\EventosDelegadoscs.cs" />
-    <Compile Include="Model\LAMDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LAMDB.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\LAMDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LAMDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model1.cs">
       <AutoGen>True</AutoGen>
@@ -327,12 +326,12 @@
     <None Include="Model\dtLam.xss">
       <DependentUpon>dtLam.xsd</DependentUpon>
     </None>
-    <None Include="Model\LAMDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LAMDB.edmx</DependentUpon>
-      <LastGenOutput>LAMDB.Context.cs</LastGenOutput>
-    </None>
     <None Include="Model\LAMDB.edmx.diagram">
+      <DependentUpon>LAMDB.edmx</DependentUpon>
+    </None>
+    <None Include="Model\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>LAMDB.edmx</DependentUpon>
     </None>
     <None Include="Model\Model1.tt">
@@ -407,13 +406,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LAM.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="LAM_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>LAM.mdf</DependentUpon>
-    </Content>
     <Content Include="Model\LAMDB.edmx.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

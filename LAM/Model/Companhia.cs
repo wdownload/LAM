@@ -16,19 +16,19 @@ namespace LAM.Model
     {
         public Companhia()
         {
-            this.Chegada = new HashSet<Chegada>();
             this.Balcaos = new HashSet<Balcao>();
+            this.Chegadas = new HashSet<Chegada>();
             this.Partidas = new HashSet<Partida>();
         }
     
         public decimal Id { get; set; }
+        public string Nome { get; set; }
         public byte[] Icon { get; set; }
         public string Contacto { get; set; }
-        public string Nome { get; set; }
         public string Sigla { get; set; }
     
-        public virtual ICollection<Chegada> Chegada { get; set; }
         public virtual ICollection<Balcao> Balcaos { get; set; }
+        public virtual ICollection<Chegada> Chegadas { get; set; }
         public virtual ICollection<Partida> Partidas { get; set; }
     }
 }

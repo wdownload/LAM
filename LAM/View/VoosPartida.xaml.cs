@@ -47,9 +47,9 @@ namespace LAM.View
 
             InitializeComponent();
 
-            g.DataContext = context.Chegada ;
+            g.DataContext = context.Chegadas ;
             g.Items.Add("");
-            companhias.AddRange(context.Companhia.ToList());
+            companhias.AddRange(context.Companhias.ToList());
 
 
             Timer.Tick += new EventHandler(Timer_Click);

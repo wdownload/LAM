@@ -1,7 +1,7 @@
 ﻿<Window x:Class="LAM.View.Compania"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Compania" Height="441" Width="384">
+        Title="Companhia" Height="441" Width="384">
     <Grid>
 
         <Image Margin="30,10,46,291" Name="imgPhoto"  Stretch="Fill" />

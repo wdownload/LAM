@@ -38,7 +38,7 @@ namespace LAM.View
         public ctrlVoos()
         {
             InitializeComponent();
-            cblCompania.ItemsSource = context.Companhia.ToList<Companhia>(); ;
+            cblCompania.ItemsSource = context.Companhias.ToList<Companhia>(); ;
 
             this.updateBalcao += new UpdateBalcao(updateBalca);
         }

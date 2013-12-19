@@ -72,7 +72,7 @@ namespace LAM.View
         {
             var combo = sender as ComboBox;
             combo.Items.Clear();
-            combo.ItemsSource = context.Companhia;
+            combo.ItemsSource = context.Companhias;
         }
 
     }

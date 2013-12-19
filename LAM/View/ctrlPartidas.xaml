@@ -15,7 +15,7 @@
 
                 <DataGrid.Columns>
 
-                    <DataGridTemplateColumn Header ="Compania &#xA;Airline" Width="200" IsReadOnly="False">
+                    <DataGridTemplateColumn Header ="Companhia &#xA;Airline" Width="200" IsReadOnly="False">
 
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
