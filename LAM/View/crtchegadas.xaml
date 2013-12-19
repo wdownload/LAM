@@ -5,53 +5,60 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" Width="1338">
+    <StackPanel>
+        <Grid>
+            <Label x:Name="lbltitulo" Content="CHEGADAS/ARRIVAL" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="529" Height="70" FontSize="50" FontWeight="Bold" Foreground="White"/>
+            <Label x:Name="label2" Visibility="Visible" HorizontalAlignment="Right"  VerticalAlignment="Top" FontSize="50" FontWeight="Bold" Foreground="White" RenderTransformOrigin="0.2,-2"/>
+        </Grid>
 
-    <Grid Height="365" VerticalAlignment="Top" Margin="0,0,0,-65">
-        <DataGrid x:Name="g" HorizontalAlignment="Left" Margin="23,145,0,-47" Width="1305" RowDetailsVisibilityMode="Collapsed" SelectionUnit="FullRow" HeadersVisibility="Column" AutoGenerateColumns="false" MinRowHeight="9" BorderBrush="{x:Null}"  RowHeight="70" Background="{x:Null}" Foreground="Black" CanUserAddRows="True" ItemsSource="{Binding}" CanUserDeleteRows="True" RowEditEnding="DataGrid_RowEditEnding" >
-            <DataGrid.Columns>
+        <Grid Height="980" VerticalAlignment="Top" Margin="0,0,0,-680">
 
-                <DataGridTemplateColumn Header ="Compania &#xA;Airline" Width="200" IsReadOnly="False">
+            <DataGrid  AlternationCount="2"  x:Name="g" HorizontalAlignment="Left" Margin="0,0,0,98" Width="1305" RowDetailsVisibilityMode="Collapsed" SelectionUnit="FullRow" HeadersVisibility="Column" AutoGenerateColumns="false" MinRowHeight="9" BorderBrush="{x:Null}"  RowHeight="70" Background="{x:Null}" Foreground="Black" CanUserAddRows="True" ItemsSource="{Binding}" RowEditEnding="DataGrid_RowEditEnding" AreRowDetailsFrozen="True" AlternatingRowBackground="#FF3A5D25" RowBackground="#FF1D2916" >
 
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Path=Companhia1.Icon}" Width="200"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
+                <DataGrid.Columns>
 
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox  x:Name="cblInternalComp" Initialized="cblInternalComp_Initialized"  IsDropDownOpen="False" SelectionChanged="clInternalComp_SelectionChanged">
+                    <DataGridTemplateColumn Header ="Compania &#xA;Airline" Width="200" IsReadOnly="False">
 
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Path=Companhia1.Icon}" Width="200"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
 
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Width="200">
-
-                                            <Image Source="{Binding Path=Icon}" Stretch="UniformToFill" />
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-
-                            </ComboBox>
-
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-
-                </DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox  x:Name="cblInternalComp" Initialized="cblInternalComp_Initialized"  IsDropDownOpen="False" SelectionChanged="clInternalComp_SelectionChanged">
 
 
-                <DataGridTextColumn Header ="Voo &#xA;Fligth" Width="200" Binding="{Binding Path= Voo }" Foreground="#FF1F211F" FontSize="30" />
-                <DataGridTextColumn Header ="Destino &#xA;Destination " Width="300" Binding="{Binding Path=Destino}" Foreground="#FF1F211F" FontSize="30"/>
-                <DataGridTextColumn Header ="Chegada &#xA;Arrival" Width="200" Binding="{Binding Path=Chegada}" Foreground="#FF1F211F" FontSize="30"/>
-                <DataGridTextColumn Header ="Previsão &#xA;Expected" Width="200" Binding="{Binding Path=Previsao}" Foreground="#FF1F211F" FontSize="30"/>
-                <DataGridTextColumn Header ="Observação &#xA;Remark" Width="195" Binding="{Binding Path=Obs}" Foreground="#FF1F211F" FontSize="30"/>
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Width="200">
+                                                <TextBlock Text="{Binding Sigla}" Margin="4,0"/>
+                                                <Image Source="{Binding Path=Icon}"  Width="200" Height="70" Stretch="UniformToFill" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
 
-            </DataGrid.Columns>
 
-        </DataGrid>
-        <Label x:Name="lbltitulo" Content="CHEGADAS/ARRIVAL" HorizontalAlignment="Left" Margin="26,18,0,0" VerticalAlignment="Top" Width="529" Height="70" FontSize="50" FontWeight="Bold" Background="{x:Null}" Foreground="#FF23C532"/>
-        <Label x:Name="label2" HorizontalAlignment="Right" Margin="0,30,10,0" VerticalAlignment="Top" FontSize="50" FontWeight="Bold" Background="{x:Null}" Foreground="#FF23C532" RenderTransformOrigin="0.2,-2.1"/>
+                                </ComboBox>
 
-    </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header ="Voo &#xA;Fligth" Width="200" Binding="{Binding Path= Voo }" Foreground="#FFF5A905" FontSize="30" />
+                    <DataGridTextColumn Header ="Destino &#xA;Destination " Width="300" Binding="{Binding Path=Destino}" Foreground="White" FontSize="30"/>
+                    <DataGridTextColumn Header ="Chegada &#xA;Arrival" Width="200" Binding="{Binding Path=Chegada1}" Foreground="White" FontSize="30"/>
+                    <DataGridTextColumn Header ="Previsão &#xA;Expected" Width="200" Binding="{Binding Path=Previsao}" Foreground="White" FontSize="30"/>
+                    <DataGridTextColumn Header ="Observação &#xA;Remark" Width="195" Binding="{Binding Path=Obs}" Foreground="White" FontSize="30"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Grid>
+    </StackPanel>
+
 
 </UserControl>
