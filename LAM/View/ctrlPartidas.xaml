@@ -11,7 +11,7 @@
             <Label x:Name="label2" Visibility="Visible" HorizontalAlignment="Right"  VerticalAlignment="Top" FontSize="50" FontWeight="Bold" Foreground="White" RenderTransformOrigin="0.2,-2"/>
         </Grid>
         <Grid Height="980" VerticalAlignment="Top" Margin="0,0,0,-680">
-            <DataGrid  AlternationCount="2"  x:Name="g" HorizontalAlignment="Left" Margin="0,0,0,98" Width="1305" RowDetailsVisibilityMode="Collapsed" SelectionUnit="FullRow" HeadersVisibility="Column" AutoGenerateColumns="false" MinRowHeight="9" BorderBrush="{x:Null}"  RowHeight="70" Background="{x:Null}" Foreground="Black" CanUserAddRows="True" ItemsSource="{Binding}" RowEditEnding="DataGrid_RowEditEnding" AreRowDetailsFrozen="True" AlternatingRowBackground="#FF3A5D25" RowBackground="#FF1D2916" >
+            <DataGrid   AlternationCount="2"  x:Name="g" HorizontalAlignment="Left" Margin="0,0,0,98" Width="1305" RowDetailsVisibilityMode="Collapsed" SelectionUnit="FullRow" HeadersVisibility="Column" AutoGenerateColumns="false" MinRowHeight="9" BorderBrush="{x:Null}"  RowHeight="70" Background="{x:Null}" Foreground="Black" CanUserAddRows="True" ItemsSource="{Binding}" RowEditEnding="DataGrid_RowEditEnding" AreRowDetailsFrozen="True" AlternatingRowBackground="#FF3A5D25" RowBackground="#FF1D2916" >
 
                 <DataGrid.Columns>
 
@@ -30,7 +30,7 @@
 
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Width="200">
+                                            <StackPanel Width="200" Background="DodgerBlue">
                                                 <TextBlock Text="{Binding Sigla}" Margin="4,0"/>
                                                 <Image Source="{Binding Path=Icon}"  Width="200" Height="70" Stretch="UniformToFill" />
                                             </StackPanel>

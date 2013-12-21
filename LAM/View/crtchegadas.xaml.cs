@@ -45,7 +45,7 @@ namespace LAM.View
                 if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                     return new List<Chegada>();
 
-                return context.Chegadas.ToList();
+                return context.Chegada.ToList();
             }
         }
 
@@ -66,8 +66,8 @@ namespace LAM.View
         private void BindData()
         {
             //var dataSource = new ObservableCollection<ImapHost>(context.Car);
-            list = new ObservableCollection<Chegada>(context.Chegadas.ToList());
-            companhias = new ObservableCollection<Companhia>(context.Companhias.ToList());
+            list = new ObservableCollection<Chegada>(context.Chegada.ToList());
+            companhias = new ObservableCollection<Companhia>(context.Companhia.ToList());
             list.CollectionChanged += CollectionChanged;
             g.ItemsSource = list;
             //g.DataContext = list;
@@ -77,11 +77,11 @@ namespace LAM.View
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
                 foreach (Chegada cheg in e.NewItems)
-                    context.Chegadas.Add(cheg);
+                    context.Chegada.Add(cheg);
 
             else if (e.Action == NotifyCollectionChangedAction.Remove)
                 foreach (Chegada cheg in e.OldItems)
-                    context.Chegadas.Remove(cheg);
+                    context.Chegada.Remove(cheg);
             //BindData();
         }
 

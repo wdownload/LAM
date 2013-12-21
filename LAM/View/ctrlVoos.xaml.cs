@@ -38,7 +38,7 @@ namespace LAM.View
         public ctrlVoos()
         {
             InitializeComponent();
-            cblCompania.ItemsSource = context.Companhias.ToList<Companhia>(); ;
+            cblCompania.ItemsSource = context.Companhia.ToList<Companhia>(); ;
 
             this.updateBalcao += new UpdateBalcao(updateBalca);
         }
@@ -63,7 +63,7 @@ namespace LAM.View
             this.balcao = balcao;
             try
             {
-                var balcoes = context.Balcaos.Where(p => p.Balcao1.Value == balcao).First();
+                var balcoes = context.Balcao.Where(p => p.Balcao1.Value == balcao).First();
 
                 byte[] data = balcoes.Companhia1.Icon; // Load that from your database
 
@@ -198,7 +198,7 @@ namespace LAM.View
 
         internal void gravar()
         {
-            var balcoes = context.Balcaos.Where(p => p.Balcao1.Value == balcao).First();
+            var balcoes = context.Balcao.Where(p => p.Balcao1.Value == balcao).First();
             balcoes.Cidade = lblDestino.Content == null ? "" : lblDestino.Content.ToString();
             balcoes.Classe = lblClasse.Content == null ? "" : lblClasse.Content.ToString();
             balcoes.Voo = lblVoo.Content == null ? "" : lblVoo.Content.ToString();

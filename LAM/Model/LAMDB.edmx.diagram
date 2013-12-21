@@ -5,11 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9f596f47ffa04de98ce7755baaf4f76f" Name="Diagram1">
-        <EntityTypeShape EntityType="LamModel.Balcao" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LamModel.Chegada" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="LamModel.Companhia" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LamModel.Partida" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <AssociationConnector Association="LamModel.FK_Balcao_Companhia" ManuallyRouted="false" />
         <AssociationConnector Association="LamModel.FK_Chegada_Companhia" ManuallyRouted="false" />
         <AssociationConnector Association="LamModel.FK_Partida_Companhia" ManuallyRouted="false" />
       </Diagram>

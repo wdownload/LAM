@@ -1,4 +1,7 @@
-﻿using LAM.Model;
+﻿
+
+
+using LAM.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +19,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
+
+
+
+
 namespace LAM.View
 {
     /// <summary>
@@ -26,6 +35,8 @@ namespace LAM.View
         //ObservableCollection<chekin> list = new ObservableCollection<chekin>();
         List<KeyValuePair<string, string>> imageslist;
         ObservableCollection<Companhia> companhias;
+
+        int counter = 0;
 
         System.Windows.Threading.DispatcherTimer Timer = new System.Windows.Threading.DispatcherTimer();
 
@@ -41,12 +52,14 @@ namespace LAM.View
                 if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                     return new List<Partida>();
 
-                return context.Partidas.ToList();
+                return context.Partida.ToList();
             }
         }
 
         public ctrlPartidas()
         {
+           
+            
             InitializeComponent();
             
            // g.ItemsSource = list;
@@ -60,9 +73,10 @@ namespace LAM.View
         private void BindData()
         {
             //var dataSource = new ObservableCollection<ImapHost>(context.Car);
-            list = new ObservableCollection<Partida>(context.Partidas.ToList());
-            companhias = new ObservableCollection<Companhia>(context.Companhias.ToList());
+            list = new ObservableCollection<Partida>(context.Partida.ToList());
+            companhias = new ObservableCollection<Companhia>(context.Companhia.ToList());
             list.CollectionChanged += CollectionChanged;
+            list.Take(10); 
             g.DataContext = list;
             //g.DataContext = list;
 
@@ -72,11 +86,11 @@ namespace LAM.View
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
                 foreach (Partida cheg in e.NewItems)
-                    context.Partidas.Add(cheg);
+                    context.Partida.Add(cheg);
 
             else if (e.Action == NotifyCollectionChangedAction.Remove)
                 foreach (Partida cheg in e.OldItems)
-                    context.Partidas.Remove(cheg);
+                    context.Partida.Remove(cheg);
             //BindData();
         }
 
@@ -92,6 +106,14 @@ namespace LAM.View
             DateTime d;
             d = DateTime.Now;
             label2.Content = d.ToString("dd/MM/yyyy ") + d.Hour + " : " + d.Minute + " : " + d.Second;
+            if (counter == 30)
+            {
+                
+                list.Take(10);
+                g.DataContext = getRandomList();
+                return;
+            }
+            counter++;
         }
 
         private void g_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -180,6 +202,18 @@ namespace LAM.View
             }
             chegada = null;
 
+        }
+
+        private List<object> getRandomList() {
+            var _list = new List<object>();
+            Random random = new Random();
+            for (int i = 0; i < 10; i++) {
+                int position = random.Next(list.Count);
+                if(position<list.Count && position>0)
+                _list.Add(list.ElementAt(position));
+            }
+                return _list;
+        
         }
     }
 

@@ -160,6 +160,7 @@
     <Compile Include="View\JanelaClasse.xaml.cs">
       <DependentUpon>JanelaClasse.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\LAMEntities.cs" />
     <Compile Include="View\TelaBalcao.xaml.cs">
       <DependentUpon>TelaBalcao.xaml</DependentUpon>
     </Compile>

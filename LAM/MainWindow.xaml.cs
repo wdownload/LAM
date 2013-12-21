@@ -1,4 +1,7 @@
-﻿using LAM.Model;
+﻿#define AUTORIZATION  
+
+
+using LAM.Model;
 using LAM.View;
 using MahApps.Metro.Controls;
 using System;
@@ -18,6 +21,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace LAM
 {
@@ -28,7 +32,9 @@ namespace LAM
     public partial class MainWindow : MetroWindow
     {
         EnventoBalcao evento = null;
-
+        public const string  AUTHENTICATION = "/LAM/AUTHENTICATION/";
+        bool FORCE_CLOSE = false;
+      
         private double LastHeight, LastWidth;
         private System.Windows.WindowState LastState;
 
@@ -36,9 +42,10 @@ namespace LAM
 
         public MainWindow()
         {
-
+            
+            
             InitializeComponent();
-
+            ActivationProgram();
             LastHeight = Height;
             LastWidth = Width;
             LastState = WindowState;
@@ -62,6 +69,34 @@ namespace LAM
 
             //block Windows Size
             this.SourceInitialized += Window1_SourceInitialized;
+        }
+
+        private void ActivationProgram()
+        {
+            var filename = AUTHENTICATION + "activation.pcl";
+            if (File.Exists(filename))
+
+            { 
+                DateTime today= new DateTime();
+
+                DateTime.TryParse("12/25/2013", out today);
+                if (DateTime.Today.Date < today)
+                    return;
+                else
+                {
+                    System.Windows.MessageBox.Show("Licensa Expirada");
+                    FORCE_CLOSE = true;
+                    this.Close();
+                }
+
+            }
+            else
+            {
+                Directory.CreateDirectory(AUTHENTICATION);
+                File.Create(filename);
+                File.Encrypt(filename);
+
+            }
         }
 
         private void Window1_SourceInitialized(object sender, EventArgs e)
@@ -525,6 +560,9 @@ namespace LAM
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+
+            if (FORCE_CLOSE)
+                return;
             string sMessageBoxText = "Deseja terminar a aplicação?";
             string sCaption = "Terminar Aplicação";
 

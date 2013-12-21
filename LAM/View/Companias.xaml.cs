@@ -36,7 +36,7 @@ namespace LAM.View
         public void BindData()
         {
         
-            list = new ObservableCollection<Companhia>(context.Companhias.ToList());
+            list = new ObservableCollection<Companhia>(context.Companhia.ToList());
 
             list.CollectionChanged += CollectionChanged;
             g.ItemsSource = list;
@@ -48,11 +48,11 @@ namespace LAM.View
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
                 foreach (Companhia cheg in e.NewItems)
-                    context.Companhias.Add(cheg);
+                    context.Companhia.Add(cheg);
 
             else if (e.Action == NotifyCollectionChangedAction.Remove)
                 foreach (Companhia cheg in e.OldItems)
-                    context.Companhias.Remove(cheg);
+                    context.Companhia.Remove(cheg);
             BindData();
         }
 

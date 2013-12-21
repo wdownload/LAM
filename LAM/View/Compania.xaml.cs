@@ -33,7 +33,7 @@ namespace LAM.View
 
         public void buscarCompanhia(int id) 
         {
-            var comp = context.Companhias.Find(id);
+            var comp = context.Companhia.Find(id);
 
             txtnome.Text = comp.Nome;
 
@@ -66,7 +66,7 @@ namespace LAM.View
                 compania.Icon = ImgData;
                 compania.Sigla = txtsigla.Text;
 
-                context.Companhias.Add(compania);
+                context.Companhia.Add(compania);
 
                 context.SaveChanges();
 
@@ -80,7 +80,7 @@ namespace LAM.View
                 compania.Sigla = txtsigla.Text;
                 //compania.Icon = ImgData;
 
-                context.Companhias.Add(compania);
+                context.Companhia.Add(compania);
                 context.SaveChanges();
 
                 System.Windows.Forms.MessageBox.Show("Gravado Com Sucesso");
